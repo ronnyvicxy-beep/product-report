@@ -3,245 +3,195 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>每日选品报告 · 2026年05月28日</title>
+  <title>每日选品报告 · 亚马逊家居蓝海品</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
       background: #f4f6f9;
       color: #333;
+      min-height: 100vh;
     }
+
+    /* Header */
     .header {
       background: linear-gradient(135deg, #e85d04 0%, #f48c06 100%);
       color: white;
-      padding: 40px 20px 30px;
+      padding: 48px 20px 40px;
       text-align: center;
     }
-    .header h1 { font-size: 26px; font-weight: 700; margin-bottom: 10px; }
-    .header .meta { font-size: 14px; opacity: 0.9; }
-    .header .tags { margin-top: 14px; }
+    .header .icon { font-size: 48px; margin-bottom: 12px; }
+    .header h1 { font-size: 26px; font-weight: 700; margin-bottom: 8px; line-height: 1.4; }
+    .header p { font-size: 14px; opacity: 0.9; margin-bottom: 16px; }
+    .header .tags { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
     .header .tags span {
-      display: inline-block;
       background: rgba(255,255,255,0.2);
       border-radius: 20px;
       padding: 4px 14px;
       font-size: 13px;
-      margin: 4px;
     }
-    .container { max-width: 900px; margin: 0 auto; padding: 30px 20px 60px; }
+
+    /* 最新报告入口 */
+    .container { max-width: 800px; margin: 0 auto; padding: 30px 20px 60px; }
+
+    .latest-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(232,93,4,0.15);
+      border: 2px solid #e85d04;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .latest-card .left h2 { font-size: 18px; font-weight: 700; color: #e85d04; margin-bottom: 6px; }
+    .latest-card .left p { font-size: 14px; color: #666; }
+    .latest-btn {
+      display: inline-block;
+      background: #e85d04;
+      color: white;
+      text-decoration: none;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .latest-btn:hover { background: #c94e00; }
+
+    /* 历史列表 */
     .section-title {
-      font-size: 18px; font-weight: 700; color: #333;
-      margin: 30px 0 14px;
-      display: flex; align-items: center; gap: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 14px;
+      padding-left: 10px;
+      border-left: 4px solid #e85d04;
     }
-    .section-title::before {
-      content: ''; display: inline-block;
-      width: 4px; height: 20px;
-      background: #e85d04; border-radius: 2px;
+
+    .report-list { display: flex; flex-direction: column; gap: 10px; }
+
+    .report-item {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: box-shadow 0.2s, transform 0.1s;
+      text-decoration: none;
+      color: inherit;
     }
-    table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-    thead tr { background: #e85d04; color: white; }
-    th, td { padding: 11px 14px; text-align: left; font-size: 14px; }
-    tbody tr { border-bottom: 1px solid #f0f0f0; }
-    tbody tr:last-child { border-bottom: none; }
-    tbody tr:hover { background: #fff8f4; }
-    .tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
-    .tag-low { background: #d4edda; color: #155724; }
-    .tag-mid { background: #fff3cd; color: #856404; }
-    .product-card {
-      background: white; border-radius: 16px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-      margin: 20px 0; overflow: hidden;
-      display: flex; transition: box-shadow 0.2s;
+    .report-item:hover {
+      box-shadow: 0 4px 16px rgba(232,93,4,0.12);
+      transform: translateY(-1px);
     }
-    .product-card:hover { box-shadow: 0 6px 24px rgba(232,93,4,0.12); }
-    .card-index {
-      width: 48px; background: linear-gradient(180deg, #e85d04, #f48c06);
-      color: white; display: flex; align-items: center; justify-content: center;
-      font-size: 20px; font-weight: 700; flex-shrink: 0;
+    .report-item .date-badge {
+      background: #fff4ee;
+      color: #e85d04;
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
-    .card-img { width: 180px; height: 180px; object-fit: cover; flex-shrink: 0; }
-    .card-body { padding: 16px 20px; flex: 1; }
-    .card-body h2 { font-size: 16px; font-weight: 700; color: #222; margin-bottom: 10px; }
-    .card-body h2 .en { font-size: 13px; color: #888; font-weight: 400; margin-left: 6px; }
-    .card-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
-    .meta-item { background: #f5f5f5; border-radius: 6px; padding: 3px 10px; font-size: 13px; color: #555; }
-    .meta-item b { color: #e85d04; }
-    .card-body p { font-size: 13.5px; line-height: 1.7; color: #555; margin-bottom: 5px; }
-    .card-body p b { color: #333; }
-    .risk {
-      background: #fff8e1; border-left: 3px solid #ffc107;
-      border-radius: 0 6px 6px 0; padding: 6px 10px;
-      font-size: 13px; color: #7a5c00; margin-top: 8px;
-    }
-    .supplier-link {
-      display: inline-block; margin-top: 10px;
-      color: #e85d04; font-size: 13px; text-decoration: none;
-      border: 1px solid #e85d04; border-radius: 6px; padding: 4px 12px;
-      transition: all 0.2s;
-    }
-    .supplier-link:hover { background: #e85d04; color: white; }
-    .highlight-box {
+    .report-item .info { flex: 1; }
+    .report-item .info .title { font-size: 14px; font-weight: 600; color: #333; margin-bottom: 3px; }
+    .report-item .info .desc { font-size: 12px; color: #999; }
+    .report-item .arrow { color: #e85d04; font-size: 18px; flex-shrink: 0; }
+
+    /* 订阅提示 */
+    .subscribe-box {
       background: linear-gradient(135deg, #fff8e1, #fff3cd);
-      border: 2px solid #ffc107; border-radius: 16px;
-      padding: 20px 24px; margin: 30px 0;
-      display: flex; align-items: flex-start; gap: 14px;
+      border: 1px solid #ffc107;
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-top: 32px;
+      text-align: center;
     }
-    .highlight-box .icon { font-size: 30px; flex-shrink: 0; }
-    .highlight-box h3 { font-size: 16px; color: #7a5c00; margin-bottom: 6px; }
-    .highlight-box p { font-size: 14px; color: #7a5c00; line-height: 1.7; }
-    .footer { text-align: center; color: #aaa; font-size: 12px; margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; }
-    @media (max-width: 620px) {
-      .product-card { flex-direction: column; }
-      .card-img { width: 100%; height: 200px; }
-      .card-index { width: 100%; height: 38px; }
-      table { font-size: 12px; }
-      th, td { padding: 8px 8px; }
+    .subscribe-box h3 { font-size: 15px; color: #7a5c00; margin-bottom: 6px; }
+    .subscribe-box p { font-size: 13px; color: #9a7500; line-height: 1.6; }
+
+    /* 底部 */
+    .footer {
+      text-align: center;
+      color: #bbb;
+      font-size: 12px;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+
+    @media (max-width: 500px) {
+      .latest-card { flex-direction: column; text-align: center; }
+      .header h1 { font-size: 20px; }
     }
   </style>
 </head>
 <body>
 
 <div class="header">
-  <h1>🏠 亚马逊美国站 · 每日家居蓝海选品报告</h1>
-  <div class="meta">📅 2026年05月28日 &nbsp;·&nbsp; 由跨境电商选品 AI 自动生成</div>
+  <div class="icon">🏠</div>
+  <h1>亚马逊美国站 · 每日家居蓝海选品报告</h1>
+  <p>每天自动更新 · 聚焦低竞争高潜力家居新品 · 含1688供应链参考</p>
   <div class="tags">
-    <span>📦 平台：亚马逊美国站 FBA</span>
-    <span>💰 客单价：$20–$50</span>
-    <span>🏷️ 品类：家居 Home & Garden</span>
+    <span>📦 亚马逊美国站 FBA</span>
+    <span>💰 客单价 $20–$50</span>
+    <span>🔄 每日 20:00 更新</span>
+    <span>🏷️ 采购价 ≥ ¥30</span>
   </div>
 </div>
 
 <div class="container">
 
-  <div class="section-title">候选品总览</div>
-  <table>
-    <thead>
-      <tr><th>#</th><th>产品</th><th>参考售价</th><th>1688采购价</th><th>竞争烈度</th><th>趋势</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>01</td><td>编织海草收纳篮 Seagrass Storage Basket</td><td>$22–$42</td><td>¥15–45</td><td><span class="tag tag-low">低</span></td><td>📈 快速上升</td></tr>
-      <tr><td>02</td><td>仿真花束套装 Faux Floral Stems Set</td><td>$20–$38</td><td>¥8–25</td><td><span class="tag tag-low">低</span></td><td>📈 爆发上升</td></tr>
-      <tr><td>03</td><td>玻璃密封罐厨房收纳套装 Glass Canister Set</td><td>$28–$48</td><td>¥20–55</td><td><span class="tag tag-mid">低–中</span></td><td>📈 稳步上升</td></tr>
-      <tr><td>04</td><td>木质高架种植箱 Raised Garden Planter Box</td><td>$35–$55</td><td>¥40–100</td><td><span class="tag tag-low">低</span></td><td>📈 快速增长</td></tr>
-      <tr><td>05</td><td>亚克力透明桌面陈列架 Acrylic Display Riser</td><td>$22–$40</td><td>¥12–35</td><td><span class="tag tag-mid">低–中</span></td><td>📈 上升</td></tr>
-    </tbody>
-  </table>
-
-  <div class="section-title">逐品分析</div>
-
-  <!-- 01 编织海草收纳篮 -->
-  <div class="product-card">
-    <div class="card-index">01</div>
-    <img class="card-img" src="https://s.alicdn.com/@sc04/kf/H5e53df69f4e944019615941edf125998o.jpg_640x640.jpg" alt="编织海草收纳篮" onerror="this.style.display='none'">
-    <div class="card-body">
-      <h2>编织海草收纳篮 <span class="en">Seagrass Storage Basket</span></h2>
-      <div class="card-meta">
-        <span class="meta-item">售价 <b>$22–$42</b></span>
-        <span class="meta-item">采购 <b>¥15–45/件</b></span>
-        <span class="meta-item">竞争 <b>低</b></span>
-        <span class="meta-item">📈 快速上升</span>
-      </div>
-      <p><b>趋势：</b>2026年 TikTok #amazonhome 与 YouTube 家居 Haul 视频中高频出镜；"Boho 收纳" 审美替代传统塑料盒浪潮明显，Instagram 家居博主持续种草带货</p>
-      <p><b>差异化：</b>主攻「带盖 + 方形」细分款，区别于圆形主流款；3件套定价（大/中/小）AOV 直接拉至 $35+；用"无味环保材料"作为卖点，规避消费者疑虑</p>
-      <p><b>采购：</b>广西博白华图工艺（11年厂龄）：¥35–45/件 MOQ 1000件；越南 Nature Craft：¥28–38/件 MOQ 100件起，可接小单</p>
-      <div class="risk">⚠️ 越南/孟加拉产手工品注意进口时海关分类申报（HS 4602）；部分买家投诉气味问题，须提前通风处理</div>
-      <a class="supplier-link" href="https://www.alibaba.com/product-detail/Handmade-Seagrass-Woven-Storage-Box-Seaweed_1600251545210.html" target="_blank">查看阿里巴巴供应商 →</a>
+  <!-- 最新报告 -->
+  <div class="latest-card">
+    <div class="left">
+      <h2>🔴 最新一期报告</h2>
+      <p>点击查看今日最新5个蓝海候选品 + 测款建议</p>
     </div>
+    <a class="latest-btn" href="index.html">查看最新报告 →</a>
   </div>
 
-  <!-- 02 仿真花束套装 -->
-  <div class="product-card">
-    <div class="card-index">02</div>
-    <img class="card-img" src="https://s.alicdn.com/@sc04/kf/Hc9e759fd2a9f4a60b4220e5f3c355272x.jpg_640x640.jpg" alt="仿真花束套装" onerror="this.style.display='none'">
-    <div class="card-body">
-      <h2>仿真花束套装 <span class="en">Faux Floral Stems Set</span></h2>
-      <div class="card-meta">
-        <span class="meta-item">售价 <b>$20–$38</b></span>
-        <span class="meta-item">采购 <b>¥8–25/套</b></span>
-        <span class="meta-item">竞争 <b>低</b></span>
-        <span class="meta-item">📈 爆发上升</span>
+  <!-- 历史归档 -->
+  <div class="section-title">历史报告归档</div>
+  <div class="report-list">
+
+    <a class="report-item" href="2026-05-28.html">
+      <div class="date-badge">05 / 28</div>
+      <div class="info">
+        <div class="title">2026年05月28日 · 第2期</div>
+        <div class="desc">编织海草篮 · 仿真花束 · 玻璃密封罐 · 高架种植箱 · 亚克力陈列架</div>
       </div>
-      <p><b>趋势：</b>Southern Living、Elle Decor 2026春季家居趋势榜单均将"Faux Florals"列为年度主题；TikTok @alexandra__harper 等头部家居博主带货仿真绣球/玫瑰视频单条播放超800万；"zero watering"心智完全打开</p>
-      <p><b>差异化：</b>主打「Real Touch 触感仿真」细分（普通丝花升级版），定价 $24–$36；组合销售：花束+花瓶套装，解决消费者"不知道怎么搭"的痛点；走 #cottagecoreaesthetic 风格场景图</p>
-      <p><b>采购：</b>山东 Calla Import & Export（8年厂龄Verified）：¥15–27/件 MOQ 24件；深圳 Sen Masine（15年厂龄Verified）：¥10–20/件 MOQ 100件</p>
-      <div class="risk">⚠️ SKU颜色款式极多，建议先聚焦2–3个爆款色（白色/米色/深玫红）；部分竞品有侵权花型，选款时需注意外观差异化</div>
-      <a class="supplier-link" href="https://www.alibaba.com/product-detail/CL39010-Artificial-Flower-Rose-Stem-25_1601607602993.html" target="_blank">查看阿里巴巴供应商 →</a>
-    </div>
+      <div class="arrow">›</div>
+    </a>
+
+    <a class="report-item" href="2026-05-27.html">
+      <div class="date-badge">05 / 27</div>
+      <div class="info">
+        <div class="title">2026年05月27日 · 第1期</div>
+        <div class="desc">蜡烛灯暖台 · 插座收纳架 · 竹制洗衣站 · 线缆收纳盒 · 浮动挂墙架</div>
+      </div>
+      <div class="arrow">›</div>
+    </a>
+
   </div>
 
-  <!-- 03 玻璃密封罐厨房收纳套装 -->
-  <div class="product-card">
-    <div class="card-index">03</div>
-    <img class="card-img" src="https://s.alicdn.com/@sc04/kf/H84328b46e07043f3832ef4551bc2dbecd.jpg_640x640.jpg" alt="玻璃密封罐收纳套装" onerror="this.style.display='none'">
-    <div class="card-body">
-      <h2>玻璃密封罐厨房收纳套装 <span class="en">Glass Canister Set</span></h2>
-      <div class="card-meta">
-        <span class="meta-item">售价 <b>$28–$48</b></span>
-        <span class="meta-item">采购 <b>¥20–55/套</b></span>
-        <span class="meta-item">竞争 <b>低–中</b></span>
-        <span class="meta-item">📈 稳步上升</span>
-      </div>
-      <p><b>趋势：</b>"Pantry Organization"搜索量持续走高；TikTok #aesthetickitchen 视频播放量2026年累计超40亿次；Southern Living、Food & Wine 均点名玻璃储物罐为2026厨房必备；"无塑化剂"诉求驱动玻璃替代塑料加速</p>
-      <p><b>差异化：</b>走「竹盖+高硼硅玻璃+套装标签贴」的完整解决方案，而非单卖罐子；主打 $38–$48 的3–5件套，含配套密封圈和标签贴；目标场景：Pantry 橱柜整理，listing 图直接拍橱柜整理前后对比</p>
-      <p><b>采购：</b>山西宇华玻璃（2年厂龄）：¥30–50/套 MOQ 1件起；宁波 OK Homeware（8年 Verified）：¥22–35/套 MOQ 3000套（量大价优）</p>
-      <div class="risk">⚠️ 玻璃易碎，FBA 入仓包装要求严格，内衬泡棉成本需计入；重量影响头程运费，建议精算 FBA 费率后再定价</div>
-      <a class="supplier-link" href="https://www.alibaba.com/product-detail/Food-Storage-Jars-Set-with-Airtight_1601669794774.html" target="_blank">查看阿里巴巴供应商 →</a>
-    </div>
-  </div>
-
-  <!-- 04 木质高架种植箱 -->
-  <div class="product-card">
-    <div class="card-index">04</div>
-    <img class="card-img" src="https://s.alicdn.com/@sc04/kf/S8fcdf1c246be48eaa3107344a750cda8L.png_640x640.png" alt="木质高架种植箱" onerror="this.style.display='none'">
-    <div class="card-body">
-      <h2>木质高架种植箱 <span class="en">Raised Garden Planter Box</span></h2>
-      <div class="card-meta">
-        <span class="meta-item">售价 <b>$35–$55</b></span>
-        <span class="meta-item">采购 <b>¥40–100/件</b></span>
-        <span class="meta-item">竞争 <b>低</b></span>
-        <span class="meta-item">📈 快速增长</span>
-      </div>
-      <p><b>趋势：</b>Accio 平台数据显示2026年 Raised Garden Bed 类目为 Top Seller 品类；Instagram 花园类内容2026年互动率同比上升41%；TikTok "raised planter viral" 话题播放超3亿；美国城市公寓阳台园艺渗透率持续提升</p>
-      <p><b>差异化：</b>主打「阳台/小户型专用」尺寸（60cm×30cm），区别于大院子用的大型铁制款；带储物底层+排水孔一体设计；产品图专打"公寓阳台"场景，目标受众是城市公寓用户</p>
-      <p><b>采购：</b>越南 LAC VIET HANDICRAFT（11年 Verified）：¥55–90/件 MOQ 100件；福建 NEWMARK Industrial（22年厂龄 Verified）：¥50–85/件 可定制尺寸</p>
-      <div class="risk">⚠️ 体积较大（>2立方英尺），属于 Amazon Large 件费率，需精算利润空间；木材海运注意植物检疫证明；避开带金属框架款（增加复杂度）</div>
-      <a class="supplier-link" href="https://www.alibaba.com/product-detail/Wholesale-Natural-Wooden-Raised-Garden-Bed_10000041509123.html" target="_blank">查看阿里巴巴供应商 →</a>
-    </div>
-  </div>
-
-  <!-- 05 亚克力透明桌面陈列架 -->
-  <div class="product-card">
-    <div class="card-index">05</div>
-    <img class="card-img" src="https://s.alicdn.com/@sc04/kf/H0b8f9ab3296d44148f9243e79c58c4c6R.jpg_640x640.jpg" alt="亚克力桌面陈列架" onerror="this.style.display='none'">
-    <div class="card-body">
-      <h2>亚克力透明桌面陈列架 <span class="en">Acrylic Display Riser</span></h2>
-      <div class="card-meta">
-        <span class="meta-item">售价 <b>$22–$40</b></span>
-        <span class="meta-item">采购 <b>¥12–35/件</b></span>
-        <span class="meta-item">竞争 <b>低–中</b></span>
-        <span class="meta-item">📈 上升</span>
-      </div>
-      <p><b>趋势：</b>"Dopamine Décor"（多巴胺家居）和"Aesthetic Display"在 TikTok 2026年大爆，亚克力陈列架是核心道具；被香水收藏、手办、书籍陈列、厨台调料展示等多场景覆盖；多用途属性极利于 Amazon 搜索流量聚合</p>
-      <p><b>差异化：</b>主打「3–4层阶梯式」或「L型转角款」（圆形收纳口），差异化竞品主流的平板款；加磁吸标签卡槽设计，场景延伸至办公收纳；做成2件套（大+小）定价 $28–$38，提升单量</p>
-      <p><b>采购：</b>广州 Meixiaobao Trading（2年 Verified）：¥12–18/件 MOQ 10件；深圳 Ouke Acrylic（14年厂龄）：¥25–45/件 支持定制尺寸/颜色</p>
-      <div class="risk">⚠️ 亚克力易刮花，包装需加EPE内衬保护；部分款式较重，精算FBA重量费；避免直接打"透明款"，需差异化外观（如渐变色、金属边框点缀）</div>
-      <a class="supplier-link" href="https://www.alibaba.com/product-detail/Office-Desktop-Organizer-Acrylic-4-Tier_1601407335094.html" target="_blank">查看阿里巴巴供应商 →</a>
-    </div>
-  </div>
-
-  <!-- 今日推荐 -->
-  <div class="highlight-box">
-    <div class="icon">🔴</div>
-    <div>
-      <h3>今日优先测款建议</h3>
-      <p><b>仿真花束套装（Faux Floral Stems Set）</b> — 轻小件（≤0.5kg）、FBA费率最低、供应链成本仅 ¥8–25、TikTok/Instagram 内容生态成熟天然引流，是五个品中投入产出比最优的测款选择。建议采购3–5个颜色各50件（总备货约150–250件），配合场景化 listing 主图启动测试。</p>
-    </div>
+  <!-- 订阅提示 -->
+  <div class="subscribe-box">
+    <h3>📧 每日邮件订阅</h3>
+    <p>本报告同步发送至订阅邮箱，每天 20:00 准时送达<br>如需订阅请联系报告发布者</p>
   </div>
 
   <div class="footer">
-    本报告由「跨境电商选品」AI 每日自动生成 &nbsp;·&nbsp; 2026年05月28日 &nbsp;·&nbsp; Powered by Accio Work<br>
-    如需修改推送设置或深度分析某产品，请在 Accio Work 对话中告知
+    本报告由「跨境电商选品」AI 每日自动生成 &nbsp;·&nbsp; Powered by Accio Work<br>
+    数据来源：Amazon Movers & Shakers · TikTok trending · Reddit FBA · Alibaba 供应链
   </div>
 
 </div>
