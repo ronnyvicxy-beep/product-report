@@ -1,199 +1,169 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>每日选品报告 · 亚马逊家居蓝海品</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
-      background: #f4f6f9;
-      color: #333;
-      min-height: 100vh;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日选品报告 · 亚马逊家居蓝海品 · 导航首页</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Segoe UI', sans-serif; background: #fafafa; color: #1a1a1a; }
 
-    /* Header */
-    .header {
-      background: linear-gradient(135deg, #e85d04 0%, #f48c06 100%);
-      color: white;
-      padding: 48px 20px 40px;
-      text-align: center;
-    }
-    .header .icon { font-size: 48px; margin-bottom: 12px; }
-    .header h1 { font-size: 26px; font-weight: 700; margin-bottom: 8px; line-height: 1.4; }
-    .header p { font-size: 14px; opacity: 0.9; margin-bottom: 16px; }
-    .header .tags { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
-    .header .tags span {
-      background: rgba(255,255,255,0.2);
-      border-radius: 20px;
-      padding: 4px 14px;
-      font-size: 13px;
-    }
+  .banner {
+    background: linear-gradient(135deg, #e85d04 0%, #f48c06 50%, #faa307 100%);
+    color: white;
+    padding: 44px 24px 36px;
+    text-align: center;
+  }
+  .banner .logo { font-size: 36px; margin-bottom: 10px; }
+  .banner h1 { font-size: clamp(20px, 5vw, 30px); font-weight: 800; }
+  .banner .subtitle { margin-top: 8px; font-size: 14px; opacity: 0.88; }
+  .latest-btn {
+    display: inline-block;
+    margin-top: 24px;
+    background: white;
+    color: #e85d04;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 13px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .latest-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
 
-    /* 最新报告入口 */
-    .container { max-width: 800px; margin: 0 auto; padding: 30px 20px 60px; }
+  .container { max-width: 820px; margin: 0 auto; padding: 32px 16px 60px; }
+  .section-title { font-size: 17px; font-weight: 700; color: #e85d04; border-left: 4px solid #e85d04; padding-left: 12px; margin: 32px 0 16px; }
 
-    .latest-card {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(232,93,4,0.15);
-      border: 2px solid #e85d04;
-      padding: 24px 28px;
-      margin-bottom: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .latest-card .left h2 { font-size: 18px; font-weight: 700; color: #e85d04; margin-bottom: 6px; }
-    .latest-card .left p { font-size: 14px; color: #666; }
-    .latest-btn {
-      display: inline-block;
-      background: #e85d04;
-      color: white;
-      text-decoration: none;
-      padding: 10px 24px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      white-space: nowrap;
-      transition: background 0.2s;
-    }
-    .latest-btn:hover { background: #c94e00; }
+  .history-list { display: flex; flex-direction: column; gap: 12px; }
+  .history-item {
+    background: white;
+    border-radius: 14px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    color: #1a1a1a;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    transition: transform 0.18s, box-shadow 0.18s;
+    border: 1px solid #f0f0f0;
+  }
+  .history-item:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(232,93,4,0.12); border-color: #e85d04; }
+  .date-badge {
+    background: linear-gradient(135deg, #e85d04, #f48c06);
+    color: white;
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    text-align: center;
+    min-width: 80px;
+  }
+  .date-badge .issue { font-size: 10px; opacity: 0.85; display: block; margin-top: 2px; }
+  .item-content { flex: 1; }
+  .item-title { font-size: 14px; font-weight: 600; color: #333; margin-bottom: 5px; }
+  .item-products { font-size: 12px; color: #888; line-height: 1.6; }
+  .item-arrow { color: #e85d04; font-size: 20px; font-weight: 300; }
 
-    /* 历史列表 */
-    .section-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: #333;
-      margin-bottom: 14px;
-      padding-left: 10px;
-      border-left: 4px solid #e85d04;
-    }
+  .subscribe-box {
+    background: linear-gradient(135deg, #fff8f3, #fff3e8);
+    border: 1px solid #fdd9b8;
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #333;
+  }
+  .subscribe-box h3 { color: #e85d04; font-size: 15px; margin-bottom: 8px; }
 
-    .report-list { display: flex; flex-direction: column; gap: 10px; }
+  footer { text-align: center; padding: 28px 16px; font-size: 12px; color: #bbb; border-top: 1px solid #eee; margin-top: 40px; }
+  footer a { color: #e85d04; text-decoration: none; }
 
-    .report-item {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      transition: box-shadow 0.2s, transform 0.1s;
-      text-decoration: none;
-      color: inherit;
-    }
-    .report-item:hover {
-      box-shadow: 0 4px 16px rgba(232,93,4,0.12);
-      transform: translateY(-1px);
-    }
-    .report-item .date-badge {
-      background: #fff4ee;
-      color: #e85d04;
-      border-radius: 8px;
-      padding: 6px 14px;
-      font-size: 14px;
-      font-weight: 700;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .report-item .info { flex: 1; }
-    .report-item .info .title { font-size: 14px; font-weight: 600; color: #333; margin-bottom: 3px; }
-    .report-item .info .desc { font-size: 12px; color: #999; }
-    .report-item .arrow { color: #e85d04; font-size: 18px; flex-shrink: 0; }
-
-    /* 订阅提示 */
-    .subscribe-box {
-      background: linear-gradient(135deg, #fff8e1, #fff3cd);
-      border: 1px solid #ffc107;
-      border-radius: 16px;
-      padding: 20px 24px;
-      margin-top: 32px;
-      text-align: center;
-    }
-    .subscribe-box h3 { font-size: 15px; color: #7a5c00; margin-bottom: 6px; }
-    .subscribe-box p { font-size: 13px; color: #9a7500; line-height: 1.6; }
-
-    /* 底部 */
-    .footer {
-      text-align: center;
-      color: #bbb;
-      font-size: 12px;
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid #eee;
-    }
-
-    @media (max-width: 500px) {
-      .latest-card { flex-direction: column; text-align: center; }
-      .header h1 { font-size: 20px; }
-    }
-  </style>
+  @media (max-width: 500px) {
+    .history-item { flex-wrap: wrap; }
+    .date-badge { min-width: 70px; }
+  }
+</style>
 </head>
 <body>
 
-<div class="header">
-  <div class="icon">🏠</div>
-  <h1>亚马逊美国站 · 每日家居蓝海选品报告</h1>
-  <p>每天自动更新 · 聚焦低竞争高潜力家居新品 · 含1688供应链参考</p>
-  <div class="tags">
-    <span>📦 亚马逊美国站 FBA</span>
-    <span>💰 客单价 $20–$50</span>
-    <span>🔄 每日 20:00 更新</span>
-    <span>🏷️ 采购价 ≥ ¥30</span>
-  </div>
+<div class="banner">
+  <div class="logo">📦</div>
+  <h1>每日选品报告</h1>
+  <div class="subtitle">亚马逊美国站 · 家居蓝海品 · 每日 20:00 自动更新</div>
+  <a href="latest.html" class="latest-btn">👉 查看最新报告（2026-05-28）</a>
 </div>
 
 <div class="container">
 
-  <!-- 最新报告 -->
-  <div class="latest-card">
-    <div class="left">
-      <h2>🔴 最新一期报告</h2>
-      <p>点击查看今日最新5个蓝海候选品 + 测款建议</p>
-    </div>
-    <a class="latest-btn" href="index.html">查看最新报告 →</a>
-  </div>
+  <div class="section-title">历史报告存档（共 3 期）</div>
+  <div class="history-list">
 
-  <!-- 历史归档 -->
-  <div class="section-title">历史报告归档</div>
-  <div class="report-list">
-
-    <a class="report-item" href="2026-05-28.html">
-      <div class="date-badge">05 / 28</div>
-      <div class="info">
-        <div class="title">2026年05月28日 · 第2期</div>
-        <div class="desc">编织海草篮 · 仿真花束 · 玻璃密封罐 · 高架种植箱 · 亚克力陈列架</div>
+    <!-- 第3期 -->
+    <a href="2026-05-28.html" class="history-item">
+      <div class="date-badge">
+        05月28日
+        <span class="issue">第 3 期</span>
       </div>
-      <div class="arrow">›</div>
+      <div class="item-content">
+        <div class="item-title">2026-05-28 · 亚马逊家居蓝海品</div>
+        <div class="item-products">🕯️ 蜡烛暖灯 · 🪨 硅藻土吸水垫 · 🛏️ 床头夹式收纳架 · 🗂️ 360°旋转桌面收纳 · 🔌 插座置物架</div>
+      </div>
+      <div class="item-arrow">›</div>
     </a>
 
-    <a class="report-item" href="2026-05-27.html">
-      <div class="date-badge">05 / 27</div>
-      <div class="info">
-        <div class="title">2026年05月27日 · 第1期</div>
-        <div class="desc">蜡烛灯暖台 · 插座收纳架 · 竹制洗衣站 · 线缆收纳盒 · 浮动挂墙架</div>
+    <!-- 第2期 -->
+    <a href="2026-05-28.html" class="history-item">
+      <div class="date-badge">
+        05月28日
+        <span class="issue">第 2 期</span>
       </div>
-      <div class="arrow">›</div>
+      <div class="item-content">
+        <div class="item-title">2026-05-28 · 亚马逊家居蓝海品</div>
+        <div class="item-products">🕯️ 蜡烛暖灯 · 🧹 电动清洁刷 · 🔌 插座置物架 · 🪑 腰靠记忆棉 · 🧺 可折叠收纳篮</div>
+      </div>
+      <div class="item-arrow">›</div>
+    </a>
+
+    <!-- 第1期 -->
+    <a href="2026-05-27.html" class="history-item">
+      <div class="date-badge">
+        05月27日
+        <span class="issue">第 1 期</span>
+      </div>
+      <div class="item-content">
+        <div class="item-title">2026-05-27 · 亚马逊家居蓝海品</div>
+        <div class="item-products">🕯️ 蜡烛暖灯 · 🔌 插座置物架 · 🌿 硅藻土垫 · 🧲 磁吸壁挂架 · 📦 桌面旋转收纳</div>
+      </div>
+      <div class="item-arrow">›</div>
     </a>
 
   </div>
 
-  <!-- 订阅提示 -->
+  <div class="section-title">订阅说明</div>
   <div class="subscribe-box">
-    <h3>📧 每日邮件订阅</h3>
-    <p>本报告同步发送至订阅邮箱，每天 20:00 准时送达<br>如需订阅请联系报告发布者</p>
-  </div>
-
-  <div class="footer">
-    本报告由「跨境电商选品」AI 每日自动生成 &nbsp;·&nbsp; Powered by Accio Work<br>
-    数据来源：Amazon Movers & Shakers · TikTok trending · Reddit FBA · Alibaba 供应链
+    <h3>📬 每日自动推送</h3>
+    <p>本报告每天 <strong>20:00（北京时间）</strong> 自动生成并同步更新，包含：</p>
+    <ul style="margin-top:8px;padding-left:18px;">
+      <li>基于 Amazon Movers &amp; Shakers + TikTok 趋势 + Reddit FBA 社区多源扫描</li>
+      <li>每期 5 个候选品，含阿里巴巴采购价（≥¥30 筛选）、竞争烈度、差异化切入点</li>
+      <li>同步发送至 QQ 邮箱，GitHub Pages 实时存档</li>
+    </ul>
+    <p style="margin-top:10px;">最新一期报告请点击顶部按钮查看。</p>
   </div>
 
 </div>
+
+<footer>
+  <p>跨境电商选品日报 · 数据仅供参考，不构成投资建议</p>
+  <p style="margin-top:6px;">
+    <a href="latest.html">最新报告</a> ·
+    最后更新：2026-05-28 20:00 (CST)
+  </p>
+</footer>
+
 </body>
 </html>
