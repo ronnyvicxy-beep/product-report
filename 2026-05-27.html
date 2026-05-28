@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日选品报告 · 2026年05月27日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
+      background: #f4f6f9;
+      color: #333;
+    }
+
+    /* 顶部 Header */
+    .header {
+      background: linear-gradient(135deg, #e85d04 0%, #f48c06 100%);
+      color: white;
+      padding: 40px 0 30px;
+      text-align: center;
+    }
+    .header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+    .header .meta { font-size: 14px; opacity: 0.9; letter-spacing: 1px; }
+    .header .tags { margin-top: 14px; }
+    .header .tags span {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 13px;
+      margin: 0 4px;
+    }
+
+    /* 主体容器 */
+    .container { max-width: 900px; margin: 0 auto; padding: 30px 20px 60px; }
+
+    /* 总览表 */
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #333;
+      margin: 30px 0 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 20px;
+      background: #e85d04;
+      border-radius: 2px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    thead tr { background: #e85d04; color: white; }
+    th, td { padding: 12px 16px; text-align: left; font-size: 14px; }
+    tbody tr { border-bottom: 1px solid #f0f0f0; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #fff8f4; }
+
+    .tag {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .tag-low { background: #d4edda; color: #155724; }
+    .tag-mid { background: #fff3cd; color: #856404; }
+    .tag-up  { background: #fde8d8; color: #a33200; }
+
+    /* 产品卡片 */
+    .product-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      margin: 20px 0;
+      overflow: hidden;
+      display: flex;
+      transition: box-shadow 0.2s;
+    }
+    .product-card:hover { box-shadow: 0 6px 24px rgba(232,93,4,0.12); }
+
+    .card-index {
+      width: 50px;
+      background: linear-gradient(180deg, #e85d04, #f48c06);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .card-img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .card-body {
+      padding: 18px 20px;
+      flex: 1;
+    }
+    .card-body h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 10px;
+    }
+    .card-body h2 .en { font-size: 13px; color: #888; font-weight: 400; margin-left: 6px; }
+
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .meta-item {
+      background: #f5f5f5;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 13px;
+      color: #555;
+    }
+    .meta-item b { color: #e85d04; }
+
+    .card-body p {
+      font-size: 13.5px;
+      line-height: 1.7;
+      color: #555;
+      margin-bottom: 6px;
+    }
+    .card-body p b { color: #333; }
+
+    .risk {
+      background: #fff8e1;
+      border-left: 3px solid #ffc107;
+      border-radius: 0 6px 6px 0;
+      padding: 6px 10px;
+      font-size: 13px;
+      color: #7a5c00;
+      margin-top: 8px;
+    }
+
+    .supplier-link {
+      display: inline-block;
+      margin-top: 10px;
+      color: #e85d04;
+      font-size: 13px;
+      text-decoration: none;
+      border: 1px solid #e85d04;
+      border-radius: 6px;
+      padding: 4px 12px;
+      transition: all 0.2s;
+    }
+    .supplier-link:hover { background: #e85d04; color: white; }
+
+    /* 推荐框 */
+    .highlight-box {
+      background: linear-gradient(135deg, #fff8e1, #fff3cd);
+      border: 2px solid #ffc107;
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin: 30px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .highlight-box .icon { font-size: 32px; flex-shrink: 0; }
+    .highlight-box h3 { font-size: 16px; color: #7a5c00; margin-bottom: 6px; }
+    .highlight-box p { font-size: 14px; color: #7a5c00; line-height: 1.7; }
+
+    /* 底部 */
+    .footer {
+      text-align: center;
+      color: #aaa;
+      font-size: 12px;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+
+    @media (max-width: 600px) {
+      .product-card { flex-direction: column; }
+      .card-img { width: 100%; height: 220px; }
+      .card-index { width: 100%; height: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <h1>🏠 亚马逊美国站 · 每日家居蓝海选品报告</h1>
+  <div class="meta">📅 2026年05月27日 &nbsp;·&nbsp; 由跨境电商选品 AI 自动生成</div>
+  <div class="tags">
+    <span>📦 平台：亚马逊美国站 FBA</span>
+    <span>💰 客单价：$20–$50</span>
+    <span>🏷️ 品类：家居</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 总览表 -->
+  <div class="section-title">候选品总览</div>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>产品</th>
+        <th>参考售价</th>
+        <th>1688采购价</th>
+        <th>竞争烈度</th>
+        <th>趋势</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>01</td>
+        <td>蜡烛灯暖台 Candle Warmer Lamp</td>
+        <td>$25–$45</td>
+        <td>¥35–80</td>
+        <td><span class="tag tag-mid">低–中</span></td>
+        <td>📈 快速上升</td>
+      </tr>
+      <tr>
+        <td>02</td>
+        <td>插座收纳架 Outlet Shelf Organizer</td>
+        <td>$20–$35</td>
+        <td>¥8–20</td>
+        <td><span class="tag tag-low">低</span></td>
+        <td>📈 稳步上升</td>
+      </tr>
+      <tr>
+        <td>03</td>
+        <td>竹制洗衣分类站 Bamboo Laundry Sorter</td>
+        <td>$35–$55</td>
+        <td>¥45–100</td>
+        <td><span class="tag tag-mid">低–中</span></td>
+        <td>📈 上升</td>
+      </tr>
+      <tr>
+        <td>04</td>
+        <td>桌面线缆收纳盒 Cord Management Box</td>
+        <td>$22–$38</td>
+        <td>¥15–35</td>
+        <td><span class="tag tag-mid">低–中</span></td>
+        <td>📈 快速增长</td>
+      </tr>
+      <tr>
+        <td>05</td>
+        <td>竹制浮动挂墙架 Bamboo Floating Shelf</td>
+        <td>$25–$45</td>
+        <td>¥25–60</td>
+        <td><span class="tag tag-low">低</span></td>
+        <td>📊 平稳上升</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 产品详情 -->
+  <div class="section-title">逐品分析</div>
+
+  <!-- 01 蜡烛灯暖台 -->
+  <div class="product-card">
+    <div class="card-index">01</div>
+    <img class="card-img" src="https://s.alicdn.com/@sc04/kf/H1d77bae15a594e9c9c8e379e21e87d98W.jpg_640x640.jpg" alt="蜡烛灯暖台" onerror="this.src='https://via.placeholder.com/180x180?text=No+Image'">
+    <div class="card-body">
+      <h2>蜡烛灯暖台 <span class="en">Candle Warmer Lamp</span></h2>
+      <div class="card-meta">
+        <span class="meta-item">售价 <b>$25–$45</b></span>
+        <span class="meta-item">采购 <b>¥35–80</b></span>
+        <span class="meta-item">竞争 <b>低–中</b></span>
+        <span class="meta-item">📈 快速上升</span>
+      </div>
+      <p><b>趋势：</b>年销量预估76万件，同比增长67%，Q4（11–1月）占全年45%销量，新品进 TOP 难度低</p>
+      <p><b>差异化：</b>带调光+定时功能、木质/陶瓷混搭外观、赠备用灯泡；定价 $28–$42</p>
+      <p><b>采购：</b>苏州 Enjoy Home / 杭州 Colorsail，¥35–80/件，MOQ 27件起</p>
+      <div class="risk">⚠️ 带电/加热元件需 ETL/UL 认证；季节性强，建议8月前完成头程入仓</div>
+      <a class="supplier-link" href="https://www.alibaba.com/product-detail/Wooden-OEM-Candle-Warmer-Lamp-Lantern_1601022268627.html" target="_blank">查看阿里巴巴供应商 →</a>
+    </div>
+  </div>
+
+  <!-- 02 插座收纳架 -->
+  <div class="product-card">
+    <div class="card-index">02</div>
+    <img class="card-img" src="https://s.alicdn.com/@sc04/kf/H89748814142646a283929105139d6fdfF.jpg_640x640.jpg" alt="插座收纳架" onerror="this.src='https://via.placeholder.com/180x180?text=No+Image'">
+    <div class="card-body">
+      <h2>插座收纳架 <span class="en">Outlet Shelf Organizer</span></h2>
+      <div class="card-meta">
+        <span class="meta-item">售价 <b>$20–$35</b></span>
+        <span class="meta-item">采购 <b>¥1–8</b></span>
+        <span class="meta-item">竞争 <b>低</b></span>
+        <span class="meta-item">📈 稳步上升</span>
+      </div>
+      <p><b>趋势：</b>TikTok #amazonhome 高频出镜爆款，竞品评论数500–3000，新卖家切入窗口明显</p>
+      <p><b>差异化：</b>无痕安装设计、更强承重、配套理线槽；做2–3件套提升 AOV</p>
+      <p><b>采购：</b>义乌 Lisheng ¥0.98/件（MOQ 50）/ 深圳 Lamye ¥7.71/件（带扩展款）</p>
+      <div class="risk">⚠️ 工厂货同质化严重，外观差异化和 listing 质量是核心竞争力</div>
+      <a class="supplier-link" href="https://www.alibaba.com/product-detail/Easy-Install-Standard-Vertical-Duplex-Decorative_1601596614484.html" target="_blank">查看阿里巴巴供应商 →</a>
+    </div>
+  </div>
+
+  <!-- 03 竹制洗衣分类站 -->
+  <div class="product-card">
+    <div class="card-index">03</div>
+    <img class="card-img" src="https://s.alicdn.com/@sc04/kf/H9cdb06310c58482cb4982ca4692e26d0q.jpg_640x640.jpg" alt="竹制洗衣分类站" onerror="this.src='https://via.placeholder.com/180x180?text=No+Image'">
+    <div class="card-body">
+      <h2>竹制双格洗衣分类站 <span class="en">Bamboo Laundry Sorter</span></h2>
+      <div class="card-meta">
+        <span class="meta-item">售价 <b>$35–$55</b></span>
+        <span class="meta-item">采购 <b>¥45–100</b></span>
+        <span class="meta-item">竞争 <b>低–中</b></span>
+        <span class="meta-item">📈 上升</span>
+      </div>
+      <p><b>趋势：</b>$35–$55 价格带存在明显空白，主流竞品评论不足800条；环保属性溢价空间大</p>
+      <p><b>差异化：</b>可拆卸布袋+折叠设计兼容 FBA；顶部置物板主打"洗衣房一站式"场景</p>
+      <p><b>采购：</b>福州 Bamboohomie 等多家，¥55–120/件</p>
+      <div class="risk">⚠️ 体积偏大，FBA 费率需精算；竹/木材可能需要海关检疫申报</div>
+      <a class="supplier-link" href="https://www.alibaba.com/product-detail/BAMBOOHOMIE-2-4-Tiers-Tilt-Out_1601001297385.html" target="_blank">查看阿里巴巴供应商 →</a>
+    </div>
+  </div>
+
+  <!-- 04 桌面线缆收纳盒 -->
+  <div class="product-card">
+    <div class="card-index">04</div>
+    <img class="card-img" src="https://s.alicdn.com/@sc04/kf/H1db5f9b60b854ad9a2b2df37bcd48bcaP.jpg_640x640.jpg" alt="桌面线缆收纳盒" onerror="this.src='https://via.placeholder.com/180x180?text=No+Image'">
+    <div class="card-body">
+      <h2>桌面线缆收纳盒 <span class="en">Desktop Cord Management Box</span></h2>
+      <div class="card-meta">
+        <span class="meta-item">售价 <b>$22–$38</b></span>
+        <span class="meta-item">采购 <b>¥18–45</b></span>
+        <span class="meta-item">竞争 <b>低–中</b></span>
+        <span class="meta-item">📈 快速增长</span>
+      </div>
+      <p><b>趋势：</b>2022–2025 搜索量增长312%；带盖木纹款评论仅200–400条，居家办公持续驱动需求</p>
+      <p><b>差异化：</b>竹木外观比塑料版溢价 $8–12；内置理线槽+插排收纳+遮盖板一体解决方案</p>
+      <p><b>采购：</b>曹县 Vitalucks / 福州 Meetu 等，¥18–45/件</p>
+      <div class="risk">⚠️ 选纯收纳盒款（不含电），规避带电产品物流风险</div>
+      <a class="supplier-link" href="https://www.alibaba.com/product-detail/Office-Desk-OrganizerWooden-Cable-and-Charger_1601013612407.html" target="_blank">查看阿里巴巴供应商 →</a>
+    </div>
+  </div>
+
+  <!-- 05 竹制浮动挂墙架 -->
+  <div class="product-card">
+    <div class="card-index">05</div>
+    <img class="card-img" src="https://s.alicdn.com/@sc04/kf/H5867fd7cc95a45ca9272eb6a87c66a5bI.jpg_640x640.jpg" alt="竹制浮动挂墙架" onerror="this.src='https://via.placeholder.com/180x180?text=No+Image'">
+    <div class="card-body">
+      <h2>竹制浮动挂墙装饰架 <span class="en">Bamboo Floating Wall Shelf</span></h2>
+      <div class="card-meta">
+        <span class="meta-item">售价 <b>$25–$45</b></span>
+        <span class="meta-item">采购 <b>¥18–55</b></span>
+        <span class="meta-item">竞争 <b>低</b></span>
+        <span class="meta-item">📊 平稳上升</span>
+      </div>
+      <p><b>趋势：</b>常青品类，Boho/北欧风持续受益；细分角落挂架下无强势品牌，新卖家友好</p>
+      <p><b>差异化：</b>不对称多格设计；主打卧室/浴室角落场景；组合2件套销售提升 AOV</p>
+      <p><b>采购：</b>福州 Bamboohomie 等，¥18–55/件，MOQ 50件起</p>
+      <div class="risk">⚠️ SKU 高度标准化，仿品多；建议定制外观或申请外观专利建立壁垒</div>
+      <a class="supplier-link" href="https://www.alibaba.com/product-detail/Home-Hanging-Decor-Wall-Mounted-Floating_1600740992216.html" target="_blank">查看阿里巴巴供应商 →</a>
+    </div>
+  </div>
+
+  <!-- 今日推荐 -->
+  <div class="highlight-box">
+    <div class="icon">🔴</div>
+    <div>
+      <h3>今日优先测款建议</h3>
+      <p><b>插座收纳架</b> — 成本最低（¥1–8/件）、TikTok 内容天然出镜、供应链最简单，是新卖家风险最低的首选测款品。建议采购 50–100 件先行测款，验证转化后再加大备货。</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    本报告由「跨境电商选品」AI 每日自动生成 &nbsp;·&nbsp; Powered by Accio Work<br>
+    如需修改推送设置，请在 Accio Work 对话中告知
+  </div>
+
+</div>
+</body>
+</html>
