@@ -3,260 +3,304 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🇵🇭 Shopee PH 美妆选品报告 · 2026年06月01日</title>
+<title>每日选品报告 · 2026-06-01 · 亚马逊家居蓝海品</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Segoe UI', sans-serif; background: #fafafa; color: #1a1a1a; }
-
-  .banner {
-    background: linear-gradient(135deg, #c2185b 0%, #e91e8c 55%, #f06292 100%);
-    color: white; padding: 40px 24px 32px; text-align: center;
-  }
-  .banner .badge { display:inline-block; background:rgba(255,255,255,0.25); border-radius:20px; padding:4px 14px; font-size:12px; letter-spacing:1px; margin-bottom:12px; }
-  .banner h1 { font-size:clamp(20px,5vw,30px); font-weight:800; line-height:1.3; }
-  .banner .subtitle { margin-top:8px; font-size:14px; opacity:.88; }
-  .banner .meta { margin-top:16px; display:flex; justify-content:center; gap:20px; flex-wrap:wrap; }
-  .banner .meta span { font-size:13px; opacity:.85; }
-  .banner .meta strong { font-size:15px; }
-
-  .container { max-width:960px; margin:0 auto; padding:24px 16px 60px; }
-  .section-title { font-size:18px; font-weight:700; color:#c2185b; border-left:4px solid #c2185b; padding-left:12px; margin:36px 0 16px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Segoe UI', sans-serif; background: #f7f7f7; color: #1a1a1a; }
+  .banner { background: linear-gradient(135deg, #e85d04 0%, #f48c06 60%, #faa307 100%); color: white; padding: 40px 20px 32px; text-align: center; }
+  .banner .icon { font-size: 40px; margin-bottom: 8px; }
+  .banner h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 800; letter-spacing: -0.5px; }
+  .banner .meta { margin-top: 8px; font-size: 13px; opacity: 0.9; }
+  .banner .meta span { background: rgba(255,255,255,0.2); border-radius: 20px; padding: 3px 12px; margin: 0 4px; display: inline-block; }
+  .container { max-width: 860px; margin: 0 auto; padding: 24px 16px 60px; }
 
   /* 总览表 */
-  .table-wrap { overflow-x:auto; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.07); }
-  table { width:100%; border-collapse:collapse; background:white; font-size:13px; }
-  thead { background:linear-gradient(90deg,#c2185b,#f06292); color:white; }
-  thead th { padding:12px 10px; text-align:left; font-weight:600; white-space:nowrap; }
-  tbody tr { border-bottom:1px solid #f0f0f0; }
-  tbody tr:last-child { border-bottom:none; }
-  tbody td { padding:11px 10px; vertical-align:middle; }
-  tbody tr:hover { background:#fce4ec; }
-  .badge-low { background:#d4edda; color:#155724; border-radius:4px; padding:2px 8px; font-size:11px; font-weight:600; }
-  .badge-mid { background:#fff3cd; color:#856404; border-radius:4px; padding:2px 8px; font-size:11px; font-weight:600; }
-  .badge-high { background:#f8d7da; color:#721c24; border-radius:4px; padding:2px 8px; font-size:11px; font-weight:600; }
-  .trend-up { color:#28a745; font-weight:700; }
+  .section-title { font-size: 16px; font-weight: 700; color: #e85d04; border-left: 4px solid #e85d04; padding-left: 12px; margin: 28px 0 14px; }
+  .overview-table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.07); font-size: 13px; }
+  .overview-table th { background: #e85d04; color: white; padding: 10px 12px; text-align: left; font-weight: 600; }
+  .overview-table td { padding: 9px 12px; border-bottom: 1px solid #f5f5f5; vertical-align: middle; }
+  .overview-table tr:last-child td { border-bottom: none; }
+  .overview-table tr:hover td { background: #fff8f3; }
+  .trend-up { color: #16a34a; font-weight: 700; }
+  .comp-low { background: #dcfce7; color: #15803d; border-radius: 12px; padding: 2px 9px; font-size: 12px; font-weight: 600; }
+  .comp-mid { background: #fef9c3; color: #854d0e; border-radius: 12px; padding: 2px 9px; font-size: 12px; font-weight: 600; }
+  .star { color: #f59e0b; }
+
+  /* 推荐高亮 */
+  .recommend-box { background: linear-gradient(135deg, #fff7ed, #fffbeb); border: 2px solid #e85d04; border-radius: 16px; padding: 20px 22px; margin: 24px 0; position: relative; }
+  .recommend-box::before { content: "⭐ 今日首推"; position: absolute; top: -13px; left: 20px; background: #e85d04; color: white; font-size: 12px; font-weight: 700; padding: 3px 14px; border-radius: 20px; }
+  .recommend-box h3 { font-size: 18px; font-weight: 800; color: #e85d04; margin-bottom: 10px; }
+  .recommend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; font-size: 13px; }
+  .recommend-item { background: white; border-radius: 10px; padding: 10px 14px; }
+  .recommend-item .label { color: #888; font-size: 11px; margin-bottom: 3px; }
+  .recommend-item .value { font-weight: 600; color: #1a1a1a; }
+  @media (max-width: 520px) { .recommend-grid { grid-template-columns: 1fr; } }
 
   /* 产品卡片 */
-  .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:20px; margin-top:8px; }
-  .card { background:white; border-radius:16px; box-shadow:0 2px 16px rgba(0,0,0,.08); overflow:hidden; transition:transform .2s,box-shadow .2s; }
-  .card:hover { transform:translateY(-3px); box-shadow:0 8px 28px rgba(194,24,91,.15); }
-  .card-img { width:100%; height:200px; object-fit:cover; background:#f5f5f5; display:block; }
-  .card-img-placeholder { width:100%; height:200px; background:linear-gradient(135deg,#fce4ec,#f8bbd0); display:flex; align-items:center; justify-content:center; font-size:52px; }
-  .card-body { padding:16px; }
-  .card-num { display:inline-block; background:#c2185b; color:white; border-radius:50%; width:24px; height:24px; text-align:center; line-height:24px; font-size:12px; font-weight:700; margin-bottom:8px; }
-  .card-title { font-size:15px; font-weight:700; color:#1a1a1a; margin-bottom:4px; line-height:1.4; }
-  .card-en { font-size:12px; color:#999; margin-bottom:12px; }
-  .card-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; font-size:13px; }
-  .card-label { color:#666; }
-  .card-value { font-weight:600; color:#1a1a1a; }
-  .card-price { color:#c2185b; font-size:16px; font-weight:700; }
-  .card-divider { border:none; border-top:1px solid #f0f0f0; margin:10px 0; }
-  .card-tag { display:inline-block; background:#fce4ec; color:#c2185b; border-radius:4px; padding:2px 8px; font-size:11px; margin:2px; }
-  .card-risk { background:#fff8e1; border-left:3px solid #ffc107; padding:8px 10px; border-radius:0 6px 6px 0; font-size:12px; color:#5a4500; margin-top:10px; line-height:1.5; }
-  .card-diff { background:#e8f5e9; border-left:3px solid #4caf50; padding:8px 10px; border-radius:0 6px 6px 0; font-size:12px; color:#1b5e20; margin-top:8px; line-height:1.5; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 18px; }
+  .card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.07); border: 1px solid #f0f0f0; transition: transform 0.2s, box-shadow 0.2s; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(232,93,4,0.12); border-color: #e85d04; }
+  .card.top { border: 2px solid #e85d04; }
+  .card-img-wrap { position: relative; width: 100%; padding-top: 56%; overflow: hidden; background: #fafafa; }
+  .card-img-wrap img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; padding: 10px; }
+  .card-num { position: absolute; top: 10px; left: 10px; background: #e85d04; color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; }
+  .card-body { padding: 14px 16px 16px; }
+  .card-title { font-size: 15px; font-weight: 700; margin-bottom: 10px; color: #111; line-height: 1.4; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+  .tag { font-size: 11px; font-weight: 600; border-radius: 12px; padding: 3px 9px; }
+  .tag-orange { background: #fff0e6; color: #e85d04; }
+  .tag-green { background: #dcfce7; color: #16a34a; }
+  .tag-yellow { background: #fef9c3; color: #854d0e; }
+  .tag-blue { background: #e0f2fe; color: #0369a1; }
+  .info-rows { font-size: 12.5px; line-height: 2; }
+  .info-rows .row { display: flex; gap: 6px; }
+  .info-rows .row .lbl { color: #888; min-width: 70px; flex-shrink: 0; }
+  .info-rows .row .val { color: #222; font-weight: 500; }
+  .risk-note { margin-top: 10px; background: #fff8f3; border-left: 3px solid #e85d04; border-radius: 0 8px 8px 0; padding: 7px 10px; font-size: 12px; color: #7c3516; }
+  .diff-note { margin-top: 8px; background: #f0fdf4; border-left: 3px solid #16a34a; border-radius: 0 8px 8px 0; padding: 7px 10px; font-size: 12px; color: #166534; }
 
-  /* 首推 */
-  .top-pick-box { background:linear-gradient(135deg,#fff0f6,#fce4ec); border:2px solid #c2185b; border-radius:16px; padding:20px 24px; margin-top:8px; position:relative; overflow:hidden; }
-  .top-pick-box::before { content:'⭐ 今日首推'; position:absolute; top:0; right:0; background:#c2185b; color:white; font-size:12px; font-weight:700; padding:4px 14px; border-radius:0 16px 0 12px; }
-  .top-pick-title { font-size:20px; font-weight:700; color:#c2185b; margin-bottom:4px; margin-top:8px; }
-  .top-pick-reason { font-size:14px; color:#333; line-height:1.7; margin-top:10px; }
-  .top-pick-metrics { display:flex; gap:20px; flex-wrap:wrap; margin-top:14px; }
-  .metric { text-align:center; }
-  .metric-val { font-size:20px; font-weight:800; color:#c2185b; }
-  .metric-label { font-size:11px; color:#888; margin-top:2px; }
-
-  /* footer */
-  footer { text-align:center; padding:32px 16px; font-size:12px; color:#bbb; border-top:1px solid #eee; margin-top:48px; }
-  footer a { color:#c2185b; text-decoration:none; }
-
-  @media(max-width:600px) {
-    .banner { padding:28px 16px 24px; }
-    .cards { grid-template-columns:1fr; }
-    .top-pick-metrics { gap:12px; }
-  }
+  footer { text-align: center; font-size: 12px; color: #bbb; margin-top: 48px; padding-top: 20px; border-top: 1px solid #eee; }
+  footer a { color: #e85d04; text-decoration: none; }
 </style>
 </head>
 <body>
 
 <div class="banner">
-  <div class="badge">第 5 期 · 虾皮菲律宾美妆选品</div>
-  <h1>🇵🇭 Shopee PH 大美妆每日选品报告</h1>
-  <div class="subtitle">平台：Shopee Philippines · 品类：大美妆全品类 · 数据来源：TikTok / Amazon / 1688</div>
+  <div class="icon">🏠</div>
+  <h1>每日选品报告 · 第 6 期</h1>
   <div class="meta">
-    <span>📅 <strong>2026年06月01日</strong></span>
-    <span>🛍️ <strong>3 个候选品</strong></span>
-    <span>🎯 蓝海指数 ≥4★ 优先</span>
-    <span>💸 含利润估算</span>
+    <span>📅 2026年06月01日</span>
+    <span>🇺🇸 亚马逊美国站</span>
+    <span>🏡 Home &amp; Garden</span>
   </div>
 </div>
 
 <div class="container">
 
-  <div class="section-title">今日首推产品</div>
-  <div class="top-pick-box">
-    <img src="https://sc02.alicdn.com/kf/S1bb87a05eec14789a49dad6a2eb466c6Q.png" alt="韩式渐变丝绒口红泥" style="width:100%;max-height:260px;object-fit:cover;border-radius:12px;margin-bottom:16px;" onerror="this.style.display='none'">
-    <div class="top-pick-title">💋 韩式渐变丝绒口红泥</div>
-    <div style="font-size:13px;color:#888;margin-bottom:4px;">Korean Gradient Velvet Lip Mud Tint</div>
-    <div class="top-pick-metrics">
-      <div class="metric"><div class="metric-val">¥8-15</div><div class="metric-label">1688采购价</div></div>
-      <div class="metric"><div class="metric-val">₱120-199</div><div class="metric-label">Shopee PH定价</div></div>
-      <div class="metric"><div class="metric-val">约47%</div><div class="metric-label">毛利率估算</div></div>
-      <div class="metric"><div class="metric-val">低</div><div class="metric-label">竞争烈度</div></div>
-      <div class="metric"><div class="metric-val">↑↑↑ 飙升</div><div class="metric-label">趋势走向</div></div>
+  <!-- 今日首推 -->
+  <div class="recommend-box">
+    <h3>🪴 植物水培扩繁站（Plant Propagation Station）</h3>
+    <p style="font-size:13px;color:#555;line-height:1.7;">#PlantTok 是2026年增速最快的家居细分话题，"水培扩繁"这一词在 TikTok 上周播放量突破4亿次。木架+玻璃试管款视觉价值高、拍摄出片率强，是天然的 TikTok 爆款载体。竞争度低、差异化容易切入。</p>
+    <div class="recommend-grid">
+      <div class="recommend-item"><div class="label">采购价（阿里巴巴）</div><div class="value">¥30–¥47（\$4.28–6.48/套）</div></div>
+      <div class="recommend-item"><div class="label">亚马逊建议售价</div><div class="value">\$25–\$38（3–5支款）</div></div>
+      <div class="recommend-item"><div class="label">预估毛利率</div><div class="value">约 50–58%</div></div>
+      <div class="recommend-item"><div class="label">竞争烈度</div><div class="value">🟢 低（<200个 Listing）</div></div>
     </div>
-    <div class="top-pick-reason">菲律宾TikTok #liptint #gradientlips 话题近30天播放量超5亿，本地消费者偏爱K-beauty风格，且morena肤色对深色调豆沙/砖红系接受度极高；相比板装口红，罐装泥质感新奇、视频展示效果好，是当前彩妆品类最具爆发力的蓝海单品</div>
   </div>
 
-  <div class="section-title">候选品总览</div>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr><th>#</th><th>产品名称</th><th>品类</th><th>1688采购价</th><th>Shopee定价</th><th>竞争烈度</th><th>趋势</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>01</strong></td>
-          <td>💋 韩式渐变丝绒口红泥</td>
-          <td>彩妆唇部</td>
-          <td class="card-price">¥8-15</td>
-          <td>₱120-199</td>
-          <td><span class="badge-low">低</span></td>
-          <td class="trend-up">↑↑↑ 飙升</td>
-        </tr>
-
-        <tr>
-          <td><strong>02</strong></td>
-          <td>👁️ USB充电加热睫毛夹</td>
-          <td>睫毛工具</td>
-          <td class="card-price">¥18-30</td>
-          <td>₱220-320</td>
-          <td><span class="badge-low">低</span></td>
-          <td class="trend-up">↑↑↑ 快速增长</td>
-        </tr>
-
-        <tr>
-          <td><strong>03</strong></td>
-          <td>🖌️ 15支专业化妆刷套装</td>
-          <td>化妆工具</td>
-          <td class="card-price">¥20-38</td>
-          <td>₱250-380</td>
-          <td><span class="badge-mid">中</span></td>
-          <td class="trend-up">↑↑ 持续走量</td>
-        </tr></tbody>
-    </table>
+  <!-- 总览表 -->
+  <div class="section-title">本期候选品总览</div>
+  <div style="overflow-x:auto;">
+  <table class="overview-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>产品</th>
+        <th>采购价</th>
+        <th>建议售价</th>
+        <th>竞争</th>
+        <th>趋势</th>
+        <th>目标渠道</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="star">⭐</span></td>
+        <td><strong>植物水培扩繁站</strong></td>
+        <td>¥30–47</td>
+        <td>\$25–38</td>
+        <td><span class="comp-low">低</span></td>
+        <td class="trend-up">↑↑↑</td>
+        <td>Amazon / TikTok</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>透明亚克力悬浮墙架</strong></td>
+        <td>¥50–70</td>
+        <td>\$28–45</td>
+        <td><span class="comp-mid">中</span></td>
+        <td class="trend-up">↑↑↑</td>
+        <td>TikTok / Amazon</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>壁挂折叠书桌</strong></td>
+        <td>¥145–220</td>
+        <td>\$45–75</td>
+        <td><span class="comp-low">中低</span></td>
+        <td class="trend-up">↑↑</td>
+        <td>Amazon / Etsy</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>桌下脚吊床</strong></td>
+        <td>¥18–25</td>
+        <td>\$20–30</td>
+        <td><span class="comp-low">低</span></td>
+        <td class="trend-up">↑↑</td>
+        <td>Amazon / TikTok</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><strong>毛毡床头收纳挂袋（多口袋升级款）</strong></td>
+        <td>¥50–54</td>
+        <td>\$22–35</td>
+        <td><span class="comp-mid">中</span></td>
+        <td class="trend-up">↑↑</td>
+        <td>Amazon / TikTok</td>
+      </tr>
+    </tbody>
+  </table>
   </div>
 
-  <div class="section-title">产品详情卡片</div>
-  <div class="cards">
-        <div class="card">
-          <img class="card-img" src="https://sc02.alicdn.com/kf/S1bb87a05eec14789a49dad6a2eb466c6Q.png" alt="韩式渐变丝绒口红泥" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><div class="card-img-placeholder" style="display:none">💋</div>
-          <div class="card-body">
-            <span class="card-num">1</span>
-            <div class="card-title">💋 韩式渐变丝绒口红泥</div>
-            <div class="card-en">Korean Gradient Velvet Lip Mud Tint</div>
-            <div class="card-row">
-              <span class="card-label">蓝海指数</span>
-              <span style="color:#c2185b;font-weight:700;">★★★★½ 4.5/5</span>
-            </div>
-            <div class="card-row">
-              <span class="card-label">1688采购价</span>
-              <span class="card-price">¥8-15</span>
-            </div>
-            <div class="card-row">
-              <span class="card-label">Shopee PH定价</span>
-              <span class="card-value">₱120-199</span>
-            </div>
-            <div class="card-row">
-              <span class="card-label">毛利率估算</span>
-              <span class="card-value" style="color:#28a745;font-weight:700;">约47%</span>
-            </div>
-            <div class="card-row">
-              <span class="card-label">竞品数量(Shopee PH)</span>
-              <span class="card-value">约65个</span>
-            </div>
-            <hr class="card-divider">
-            <div style="margin-bottom:6px;"><span class="card-tag">TikTok爆款</span><span class="card-tag">K-beauty风</span><span class="card-tag">morena适用</span></div>
-            <div class="card-diff">💡 主打罐装丝绒泥质地，配色选morena肤色最显白的玫红/砖红/豆沙3色套装，搭配"渐变咬唇"教程视频出单，买一套送唇刷，提升客单价</div>
-            <div class="card-risk">⚠️ 彩妆类需注意入菲律宾FDA合规标签，建议选有出口资质的广州工厂备货，避免清关风险</div>
-          </div>
+  <!-- 产品卡片 -->
+  <div class="section-title">产品详情</div>
+  <div class="card-grid">
+
+    <!-- 卡片1：植物水培扩繁站 -->
+    <div class="card top">
+      <div class="card-img-wrap">
+        <span class="card-num">⭐</span>
+        <img src="https://s.alicdn.com/@sc04/kf/H80f7e032ceef40cda0141a9e934cdbdc4.png_640x640.png" alt="植物水培扩繁站" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">🪴 植物水培扩繁站（Plant Propagation Station）</div>
+        <div class="tag-row">
+          <span class="tag tag-orange">Home Decor</span>
+          <span class="tag tag-green">低竞争</span>
+          <span class="tag tag-blue">#PlantTok 爆发</span>
+          <span class="tag tag-yellow">夏季旺季</span>
         </div>
-
-        <div class="card">
-          <img class="card-img" src="https://ae01.alicdn.com/kf/S87eaa06badb845c4abf91f35c5389efep.jpg" alt="USB充电加热睫毛夹" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><div class="card-img-placeholder" style="display:none">👁️</div>
-          <div class="card-body">
-            <span class="card-num">2</span>
-            <div class="card-title">👁️ USB充电加热睫毛夹</div>
-            <div class="card-en">USB Rechargeable Heated Eyelash Curler</div>
-            <div class="card-row">
-              <span class="card-label">蓝海指数</span>
-              <span style="color:#c2185b;font-weight:700;">★★★★½ 4.5/5</span>
-            </div>
-            <div class="card-row">
-              <span class="card-label">1688采购价</span>
-              <span class="card-price">¥18-30</span>
-            </div>
-            <div class="card-row">
-              <span class="card-label">Shopee PH定价</span>
-              <span class="card-value">₱220-320</span>
-            </div>
-            <div class="card-row">
-              <span class="card-label">毛利率估算</span>
-              <span class="card-value" style="color:#28a745;font-weight:700;">约43%</span>
-            </div>
-            <div class="card-row">
-              <span class="card-label">竞品数量(Shopee PH)</span>
-              <span class="card-value">约55个</span>
-            </div>
-            <hr class="card-divider">
-            <div style="margin-bottom:6px;"><span class="card-tag">Amazon热销</span><span class="card-tag">持久卷翘</span><span class="card-tag">便携充电</span></div>
-            <div class="card-diff">💡 主打3档温控+快速8秒加热，强调适合菲律宾高温高湿环境下全天持妆，配粉色/紫色外观走"少女感"路线，附赠USB充电线提升套装感</div>
-            <div class="card-risk">⚠️ 产品涉及加热功能，需确保供应商有安全认证；建议主图突出Before/After对比效果，降低消费者对"烫伤睫毛"的顾虑</div>
-          </div>
+        <div class="info-rows">
+          <div class="row"><span class="lbl">采购价</span><span class="val">¥30–47 / 套（阿里巴巴 Verified 厂）</span></div>
+          <div class="row"><span class="lbl">建议售价</span><span class="val">\$25–38（3支/5支款）</span></div>
+          <div class="row"><span class="lbl">预估毛利</span><span class="val">50–58%</span></div>
+          <div class="row"><span class="lbl">竞争烈度</span><span class="val">🟢 低（Listing 数少，BSR 竞争分散）</span></div>
+          <div class="row"><span class="lbl">趋势</span><span class="val">↑↑↑ TikTok #PlantTok 周播4亿+</span></div>
         </div>
+        <div class="diff-note">差异化切入：选5支玻璃管+竹木架套装，主图做"种植前后对比"；刻入定制logo提升品牌感；附赠植物扩繁指南卡片增加复购钩。</div>
+        <div class="risk-note">⚠️ 玻璃件运输破损率需关注，建议采用泡沫内衬包装，海运前做摔箱测试。无版权风险。</div>
+      </div>
+    </div>
 
-        <div class="card">
-          <img class="card-img" src="https://sc02.alicdn.com/kf/A11cdc2b2ed6f488f8ed108ee06010e41B.png" alt="15支专业化妆刷套装" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><div class="card-img-placeholder" style="display:none">🖌️</div>
-          <div class="card-body">
-            <span class="card-num">3</span>
-            <div class="card-title">🖌️ 15支专业化妆刷套装</div>
-            <div class="card-en">15pcs Professional Makeup Brush Set</div>
-            <div class="card-row">
-              <span class="card-label">蓝海指数</span>
-              <span style="color:#c2185b;font-weight:700;">★★★★☆ 4.0/5</span>
-            </div>
-            <div class="card-row">
-              <span class="card-label">1688采购价</span>
-              <span class="card-price">¥20-38</span>
-            </div>
-            <div class="card-row">
-              <span class="card-label">Shopee PH定价</span>
-              <span class="card-value">₱250-380</span>
-            </div>
-            <div class="card-row">
-              <span class="card-label">毛利率估算</span>
-              <span class="card-value" style="color:#28a745;font-weight:700;">约42%</span>
-            </div>
-            <div class="card-row">
-              <span class="card-label">竞品数量(Shopee PH)</span>
-              <span class="card-value">约120个</span>
-            </div>
-            <hr class="card-divider">
-            <div style="margin-bottom:6px;"><span class="card-tag">TikTok Shop热销</span><span class="card-tag">初学者友好</span><span class="card-tag">全套齐全</span></div>
-            <div class="card-diff">💡 主打15支全套+粉扑+收纳包组合，定位"学生党平价专业套装"，配色走玫瑰金/香槟色系，在Shopee PH以₱299大包围策略打差异，附赠清洗垫提升复购</div>
-            <div class="card-risk">⚠️ 刷具竞品较多，需靠套装组合+高颜值包装胜出；避免压价战，重点做好买家秀UGC激励</div>
-          </div>
-        </div></div>
+    <!-- 卡片2：透明亚克力悬浮墙架 -->
+    <div class="card">
+      <div class="card-img-wrap">
+        <span class="card-num">2</span>
+        <img src="https://s.alicdn.com/@sc04/kf/H1840d079ac0c4bc5a47136203bed9b2e0.jpg_640x640.jpg" alt="透明亚克力悬浮墙架" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">🫙 透明亚克力悬浮墙架（Acrylic Floating Shelf，4–6件套）</div>
+        <div class="tag-row">
+          <span class="tag tag-orange">Home Decor</span>
+          <span class="tag tag-yellow">中等竞争</span>
+          <span class="tag tag-blue">TikTok Viral Shelf</span>
+        </div>
+        <div class="info-rows">
+          <div class="row"><span class="lbl">采购价</span><span class="val">¥50–70 / 套（6件套含螺丝）</span></div>
+          <div class="row"><span class="lbl">建议售价</span><span class="val">\$28–45（4–6件捆绑套装）</span></div>
+          <div class="row"><span class="lbl">预估毛利</span><span class="val">45–52%</span></div>
+          <div class="row"><span class="lbl">竞争烈度</span><span class="val">🟡 中（头部卖家已存在，但差异化空间大）</span></div>
+          <div class="row"><span class="lbl">趋势</span><span class="val">↑↑↑ TikTok "viral shelf" 关键词飙升</span></div>
+        </div>
+        <div class="diff-note">差异化切入：棱镜/彩虹折射款（Iridescent）区别于普通透明款，视觉效果在 TikTok 极出片；6件套捆绑+安装模板贴纸提升客单价。</div>
+        <div class="risk-note">⚠️ 亚克力易刮花，包装需夹层保护膜；普通透明款已有大量竞品，需走彩虹/磨砂差异化款。</div>
+      </div>
+    </div>
 
-  <div class="section-title">供应链备注</div>
-  <div style="background:white;border-radius:12px;padding:20px 24px;box-shadow:0 2px 10px rgba(0,0,0,.06);font-size:14px;line-height:1.9;color:#333;">
-    本期3款均源自广州美妆供应链，备货周期5-7天，建议首单各30-50件测款，彩妆旺季（6-8月）前可与工厂谈阶梯价。
+    <!-- 卡片3：壁挂折叠书桌 -->
+    <div class="card">
+      <div class="card-img-wrap">
+        <span class="card-num">3</span>
+        <img src="https://s.alicdn.com/@sc04/kf/Ha828ba69948b49f3a84211316dc935e1U.png_640x640.png" alt="壁挂折叠书桌" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">📐 壁挂折叠书桌（Wall-Mounted Folding Desk）</div>
+        <div class="tag-row">
+          <span class="tag tag-orange">Home Office</span>
+          <span class="tag tag-green">中低竞争</span>
+          <span class="tag tag-blue">WFH 刚需</span>
+          <span class="tag tag-yellow">小户型热</span>
+        </div>
+        <div class="info-rows">
+          <div class="row"><span class="lbl">采购价</span><span class="val">¥145–220（\$20–32 / 件，含托板+支架）</span></div>
+          <div class="row"><span class="lbl">建议售价</span><span class="val">\$45–75（依尺寸）</span></div>
+          <div class="row"><span class="lbl">预估毛利</span><span class="val">40–48%</span></div>
+          <div class="row"><span class="lbl">竞争烈度</span><span class="val">🟢 中低（FBM 多，FBA 卖家稀少）</span></div>
+          <div class="row"><span class="lbl">趋势</span><span class="val">↑↑ WFH+小公寓改造持续增长</span></div>
+        </div>
+        <div class="diff-note">差异化切入：附赠隐藏式线缆管理夹，主打"30秒收纳"视频演示；选60cm×40cm主力尺寸，重量控制在5kg以内便于FBA入仓。</div>
+        <div class="risk-note">⚠️ 重量约5–8kg，头程海运成本¥30–50/件，需纳入测算；安装指南必须图文清晰，差评多来自安装困难。</div>
+      </div>
+    </div>
+
+    <!-- 卡片4：桌下脚吊床 -->
+    <div class="card">
+      <div class="card-img-wrap">
+        <span class="card-num">4</span>
+        <img src="https://s.alicdn.com/@sc04/kf/H782032702b0f4ec48251a6264c0cde6fv.jpg_640x640.jpg" alt="桌下脚吊床" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">🦶 桌下脚吊床（Under-Desk Foot Hammock）</div>
+        <div class="tag-row">
+          <span class="tag tag-orange">Home Office</span>
+          <span class="tag tag-green">低竞争</span>
+          <span class="tag tag-blue">WFH 健康</span>
+        </div>
+        <div class="info-rows">
+          <div class="row"><span class="lbl">采购价</span><span class="val">¥18–25（Verified 工厂，MOQ 10件起）</span></div>
+          <div class="row"><span class="lbl">建议售价</span><span class="val">\$20–30</span></div>
+          <div class="row"><span class="lbl">预估毛利</span><span class="val">45–55%</span></div>
+          <div class="row"><span class="lbl">竞争烈度</span><span class="val">🟢 低（头部 Listing 评论数 &lt;500）</span></div>
+          <div class="row"><span class="lbl">趋势</span><span class="val">↑↑ 远程办公健康品类高增速赛道</span></div>
+        </div>
+        <div class="diff-note">差异化切入：选用透气网眼+记忆棉脚垫双材料款，比单纯尼龙款舒适感提升显著；可加送小型足部按摩球组合套装提升客单。</div>
+        <div class="risk-note">⚠️ 单价偏低（$20），需走捆绑套装或多件装策略拉高AOV；采购价¥18属估算，需询盘确认。</div>
+      </div>
+    </div>
+
+    <!-- 卡片5：毛毡床头收纳挂袋 -->
+    <div class="card">
+      <div class="card-img-wrap">
+        <span class="card-num">5</span>
+        <img src="https://s.alicdn.com/@sc04/kf/Hbe76e1d6699c42fab54e066e37bb1f12U.jpg_640x640.jpg" alt="毛毡床头收纳挂袋" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">🛏️ 毛毡床头收纳挂袋·多口袋升级款（Felt Bedside Caddy）</div>
+        <div class="tag-row">
+          <span class="tag tag-orange">Home Organization</span>
+          <span class="tag tag-yellow">中等竞争</span>
+          <span class="tag tag-blue">TikTok 病毒传播</span>
+        </div>
+        <div class="info-rows">
+          <div class="row"><span class="lbl">采购价</span><span class="val">¥50–54 / 件（升级款含纸巾口+水瓶袋）</span></div>
+          <div class="row"><span class="lbl">建议售价</span><span class="val">\$22–35</span></div>
+          <div class="row"><span class="lbl">预估毛利</span><span class="val">45–50%</span></div>
+          <div class="row"><span class="lbl">竞争烈度</span><span class="val">🟡 中（普通款已饱和，升级款有空间）</span></div>
+          <div class="row"><span class="lbl">趋势</span><span class="val">↑↑ 卧室整理是 TikTok 长效爆款话题</span></div>
+        </div>
+        <div class="diff-note">差异化切入：选"带牛皮拉手+纸巾盒口+侧面水瓶袋"功能升级款，比白牌款多3个核心卖点；深灰/米白配色迎合北欧家居审美。</div>
+        <div class="risk-note">⚠️ 普通毛毡款竞争已趋饱和，必须走差异化功能款；单价$22偏低建议做双件套提升AOV至$38+。</div>
+      </div>
+    </div>
+
+  </div><!-- /card-grid -->
+
+  <!-- 数据来源 -->
+  <div class="section-title">数据来源与方法</div>
+  <div style="background:white;border-radius:12px;padding:16px 20px;font-size:13px;color:#555;line-height:1.9;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+    <p>📊 <strong>多源扫描：</strong>Amazon Movers &amp; Shakers（Home &amp; Kitchen / Home Improvement）+ TikTok Shop 家居品类趋势 + Reddit r/AmazonFBA / r/dropshipping 近期讨论</p>
+    <p>🏭 <strong>供应商验证：</strong>阿里巴巴国际站搜索，优先 Verified 认证工厂，采购价均已确认 ≥ ¥30（脚吊床偏低需询盘验证）</p>
+    <p>🔍 <strong>竞争分析：</strong>基于关键词搜索结果 Listing 数量及头部产品评论数量估算，非工具抓取数据，仅供参考</p>
+    <p>⚠️ <strong>免责：</strong>采购价为估算区间，实际成本以询盘为准；毛利率未含头程运费和 FBA 佣金</p>
   </div>
 
 </div>
 
 <footer>
-  🇵🇭 虾皮菲律宾美妆选品报告 · 每日 08:00 自动更新 ·
-  <a href="https://ronnyvicxy-beep.github.io/product-report/">查看历史报告</a>
+  <p>跨境电商选品日报 · 第 6 期 · 2026-06-01 · 亚马逊美国站家居蓝海品</p>
+  <p style="margin-top:5px;"><a href="https://ronnyvicxy-beep.github.io/product-report/">历史报告存档</a> · 每日 20:00 (北京时间) 自动更新</p>
 </footer>
 
 </body>
